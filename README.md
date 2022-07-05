@@ -3,9 +3,11 @@
 
 # Declaration
 
-1. This project is only for authorized use. It is prohibited to use this project for illegal operations, otherwise you will be responsible for the consequences. Please abide by the laws of your country! ! !
-2. I wrote it after staying up late for a short period of time, and my head is dizzy. I expect there will be many mistakes. Please point out that my contact information has been posted below, I would be very grateful!
-3. **Planning to add an exploit module every day in July, so welcome `star/fork`, every `star` and `fork` of yours is my motivation! **
+- This project is only for authorized use. It is prohibited to use this project for illegal operations, otherwise you will be responsible for the consequences. Please abide by the laws of your country! ! !  
+
+- I wrote it after staying up late for a short period of time, and my head is dizzy. I expect there will be many mistakes. Please point out that my contact information has been posted below, I would be very grateful!  
+
+- Planning to add an exploit module every day in July, so welcome `star/fork`, every `star` and `fork` of yours is my motivation!  
 # Latest-Interface-Display 
 ![0](https://s2.loli.net/2022/07/05/lt6GIZOyJnNKjHr.png)
 
