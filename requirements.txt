@@ -1,0 +1,9 @@
+Pillow
+ttkbootstrap
+requests
+fake-useragent
+threadpool
+tldextract
+bs4
+pycryptodome
+shodan
