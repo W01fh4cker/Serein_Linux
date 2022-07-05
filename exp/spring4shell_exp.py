@@ -21,23 +21,16 @@ def get_random_string(length=7):
     return ''.join(random.choice('0123456789abcdefghijklmnopqrstuvwxyz') for i in range(length))
 
 def parse_url(url):
-    """
-    Parses the URL.
-    """
-
     # Url: https://example.com/login.jsp
     url = url.replace('#', '%23')
     url = url.replace(' ', '%20')
-
     if ('://' not in url):
         url = str("http://") + str(url)
     scheme = urlparse.urlparse(url).scheme
-
     # FilePath: /login.jsp
     file_path = urlparse.urlparse(url).path
     if (file_path == ''):
         file_path = '/'
-
     return({"scheme": scheme,
             "site": f"{scheme}://{urlparse.urlparse(url).netloc}",
             "host":  urlparse.urlparse(url).netloc.split(":")[0],
@@ -102,7 +95,7 @@ def test_url_cve_2022_22965(url):
     return False
 
 def get_url():
-    with open("修正后的url.txt", "r") as f:
+    with open("corrected url.txt", "r") as f:
         for i in f.readlines():
             i = i.strip()
             if i == "" or i.startswith("#"):
@@ -120,7 +113,7 @@ def spring_exp(url):
         spring_text.insert(END, chars="[!!!] " + url + " Affected (CVE-2022-22965)\n")
         spring_text.see(END)
         vulnerable_hosts.append(url)
-        with open("存在漏洞的url.txt","a+") as f:
+        with open("corrected url.txt","a+") as f:
             f.write("url:" + url + " | PAYLOAD:" + payload_all + "\n")
     else:
         spring_text.insert(END, chars="[•] " + url + " Target does not seem to be vulnerable.\n")
@@ -151,7 +144,7 @@ def run_spring4shell():
 def spring4shell_gui():
     spring = Toplevel()
     spring.geometry("910x520")
-    spring.title("Spring4shell一把梭")
+    spring.title("Spring4shell [auto-muti-exp]")
     spring.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     spring.tk.call('wm', 'iconphoto', spring._w, logo)

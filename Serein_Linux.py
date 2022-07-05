@@ -2,7 +2,7 @@ import configparser
 import shodan
 from tkinter import *
 from PIL.ImageTk import PhotoImage
-from exp.Thinkphp_5_0_x_gethell import *
+from exp.Thinkphp_5_0_x_getshell import *
 from exp.CVE_2022_22954 import *
 from exp.spring4shell_exp import *
 from exp.hkv_rce import *
@@ -43,7 +43,7 @@ import requests
 import base64
 window = tk.Tk()
 window.title("Serein [A multi-nday batch exploit tool]    Copyright © 2022    By: W01fh4cker    [Disclaimer: It is forbidden to use this software for illegal operations, otherwise you will be responsible for the consequences!]")
-window.geometry('1750x820')
+window.geometry('1755x820')
 window.resizable(0, 0)
 logo = PhotoImage(file="./logo.ico")
 window.tk.call('wm', 'iconphoto', window._w, logo)
@@ -254,7 +254,7 @@ def fofa():
                             text3.insert(END, chars=newurl + "\n")
                             text3.see(END)
                             f.write(newurl + '\n')
-            showinfo('Successfully saved', '文The file is in your current folder, urls.txt is a collection of all the collected urls, and the urls in corrected url.txt are all added with http/https headers.')
+            showinfo('Successfully saved', 'The file is in your current folder, urls.txt is a collection of all the collected urls, and the urls in corrected url.txt are all added with http/https headers.')
             text3.insert(END, chars="[+]Successfully saved!The file is in your current folder, urls.txt is a collection of all the collected urls, and the urls in corrected url.txt are all added with http/https headers.\n")
             text3.see(END)
             f.close()
@@ -638,7 +638,7 @@ button13 = ttk.Button(group3,text="MetaBase arbitrary file read(CVE-2021-41277) 
 button13.grid(row=3,column=0,columnspan=2,padx=5,pady=5)
 button14 = ttk.Button(group3,text="VMware Server-side template injection(CVE-2022-22954) [auto-muti-exp]",command=vmware_one_access_ssti_gui,width=60,bootstyle="primary")
 button14.grid(row=3,column=2,columnspan=2,padx=5,pady=5)
-button15 = ttk.Button(group3,text="Thinkphp 5.0.x pass kill gethell [auto-muti-exp]",command=Thinkphp_5_0_x_gethell_gui,width=60,bootstyle="primary")
+button15 = ttk.Button(group3,text="Thinkphp 5.0.x all-kill getshell [auto-muti-exp]",command=Thinkphp_5_0_x_getshell_gui,width=60,bootstyle="primary")
 button15.grid(row=3,column=4,columnspan=2,padx=5,pady=5)
 button16 = ttk.Button(group3,text="Ruijie Gateway administrator account password leaked [auto-muti-exp]",command=ruijie_admin_passwd_leak_gui,width=60,bootstyle="info")
 button16.grid(row=4,column=0,columnspan=2,padx=5,pady=5)

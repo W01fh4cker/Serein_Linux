@@ -11,25 +11,25 @@ def yync_exp(url):
     try:
         res = requests.get(url, timeout=3)
         if "BeanShell" in res.text:
-            yync_rce_text.insert(END,"【*】存在漏洞的url：" + url + "\n")
+            yync_rce_text.insert(END,"[! ! ! ! ! ! ] Vulnerable url:" + url + "\n")
             yync_rce_text.see(END)
-            with open ("存在用友NC命令执行漏洞的url.txt", 'a') as f:
+            with open ("[exists]yync_RCE_url.txt", 'a') as f:
                 f.write(url + "\n")
         else:
-            yync_rce_text.insert(END, "【×】不存在漏洞的url：" + url + "\n")
+            yync_rce_text.insert(END, "[×]URL without vulnerability:" + url + "\n")
             yync_rce_text.see(END)
     except Exception as err:
-        yync_rce_text.insert(END, "【×】目标请求失败，报错内容：" + str(err) + "\n")
+        yync_rce_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         yync_rce_text.see(END)
 def get_yync_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def yync_rce_gui():
     yync_rce = Toplevel()
     yync_rce.geometry("1035x455")
-    yync_rce.title("用友 NC bsh.servlet.BshServlet 远程命令执行漏洞一把梭")
+    yync_rce.title("yonyou NC RCE [auto-muti-exp]")
     yync_rce.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     yync_rce.tk.call('wm', 'iconphoto', yync_rce._w, logo)

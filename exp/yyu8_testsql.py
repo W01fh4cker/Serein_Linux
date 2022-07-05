@@ -11,25 +11,25 @@ def yyu8_testsql_exp(url):
     try:
         res = requests.get(url, timeout=3)
         if "c4ca4238a0b923820dcc509a6f75849b" in res.text:
-            yyu8_testsql_text.insert(END,"【!!!!!!】存在漏洞的url：" + url + "\n")
+            yyu8_testsql_text.insert(END,"[! ! ! ! ! ! ] Vulnerable url:" + url + "\n")
             yyu8_testsql_text.see(END)
-            with open ("存在用友U8OAtest_jspSQL注入漏洞的url.txt", 'a') as f:
+            with open ("[exists]yyu8_test_sql_RCE_url.txt", 'a') as f:
                 f.write(url + "\n")
         else:
-            yyu8_testsql_text.insert(END,"【×】不存在漏洞的url：" + url + "\n")
+            yyu8_testsql_text.insert(END,"[×]URL without vulnerability:" + url + "\n")
             yyu8_testsql_text.see(END)
     except Exception as err:
-        yyu8_testsql_text.insert(END, "【×】目标请求失败，报错内容：" + str(err) + "\n")
+        yyu8_testsql_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         yyu8_testsql_text.see(END)
 def get_yyu8_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def yyu8_testsql_gui():
     yyu8_testsql = Toplevel()
     yyu8_testsql.geometry("1035x455")
-    yyu8_testsql.title("用友 U8 OA test.jsp SQL注入漏洞一把梭")
+    yyu8_testsql.title("yonyou U8 OA test.jsp SQLinjection [auto-muti-exp]")
     yyu8_testsql.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     yyu8_testsql.tk.call('wm', 'iconphoto', yyu8_testsql._w, logo)

