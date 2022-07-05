@@ -1,5 +1,7 @@
 import requests
 import json
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 import tkinter as tk
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
@@ -26,11 +28,12 @@ def get_kkFileView_readfile_CVE_2021_43734_addr():
             address = address.strip()
             yield address
 def kkFileView_readfile_CVE_2021_43734_gui():
-    kkFileView_readfile_CVE_2021_43734 = tk.Tk()
-    kkFileView_readfile_CVE_2021_43734.geometry("910x450")
+    kkFileView_readfile_CVE_2021_43734 = Toplevel()
+    kkFileView_readfile_CVE_2021_43734.geometry("1035x455")
     kkFileView_readfile_CVE_2021_43734.title("kkFileView getCorsFile 任意文件读取漏洞一把梭")
     kkFileView_readfile_CVE_2021_43734.resizable(0, 0)
-    kkFileView_readfile_CVE_2021_43734.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    kkFileView_readfile_CVE_2021_43734.tk.call('wm', 'iconphoto', kkFileView_readfile_CVE_2021_43734._w, logo)
     global kkFileView_readfile_CVE_2021_43734_text
     kkFileView_readfile_CVE_2021_43734_text = scrolledtext.ScrolledText(kkFileView_readfile_CVE_2021_43734,width=123, height=25)
     kkFileView_readfile_CVE_2021_43734_text.grid(row=0, column=0, padx=10, pady=10)

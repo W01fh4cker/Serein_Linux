@@ -1,6 +1,7 @@
 import configparser
-import ctypes
 import shodan
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from exp.Thinkphp_5_0_x_gethell import *
 from exp.CVE_2022_22954 import *
 from exp.spring4shell_exp import *
@@ -42,13 +43,10 @@ import requests
 import base64
 window = tk.Tk()
 window.title("Serein [A multi-nday batch exploit tool]    Copyright © 2022    By: W01fh4cker    [Disclaimer: It is forbidden to use this software for illegal operations, otherwise you will be responsible for the consequences!]")
-width = window.winfo_screenwidth()
-height = window.winfo_screenheight()
-window.geometry(f'{width}x{height}')
+window.geometry('1750x820')
 window.resizable(0, 0)
-myappid = "W01f.Serein.1.0"
-ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
-window.wm_iconbitmap('logo.ico')
+logo = PhotoImage(file="./logo.ico")
+window.tk.call('wm', 'iconphoto', window._w, logo)
 notebook = ttk.Notebook(window,bootstyle="info")
 frameOne = ttk.Frame(window)
 frameTwo = ttk.Frame(window)
@@ -102,11 +100,12 @@ def fofa_saveit_twice():
 
 def fofa_info():
     global fofa_info,fofa_text1,fofa_text2,fofa_text3
-    fofa_info = tk.Tk()
+    fofa_info = Toplevel()
     fofa_info.title("fofa_configuration")
-    fofa_info.geometry('300x100')
+    fofa_info.geometry('355x130')
     fofa_info.resizable(0, 0)
-    fofa_info.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    fofa_info.tk.call('wm', 'iconphoto', fofa_info._w, logo)
     fofa_email = tk.StringVar(fofa_info,value="Fill in the registered email of fofa")
     fofa_text1 = ttk.Entry(fofa_info, bootstyle="success", width=40, textvariable=fofa_email)
     fofa_text1.grid(row=0, column=1, padx=5, pady=5)
@@ -137,11 +136,12 @@ def hunter_saveit_twice():
 
 def hunter_info():
     global hunter_info,hunter_text1,hunter_text1,hunter_text2
-    hunter_info = tk.Tk()
+    hunter_info = Toplevel()
     hunter_info.title("hunter_configuration")
-    hunter_info.geometry('662x122')
+    hunter_info.geometry('768x150')
     hunter_info.resizable(0, 0)
-    hunter_info.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    hunter_info.tk.call('wm', 'iconphoto', hunter_info._w, logo)
     hunter_api_key = tk.StringVar(hunter_info,value="Fill in hunter's api-key")
     hunter_text1 = ttk.Entry(hunter_info, bootstyle="success", width=92, textvariable=hunter_api_key)
     hunter_text1.grid(row=0, column=0, padx=5, pady=5)
@@ -172,11 +172,12 @@ def shodan_saveit_twice():
 
 def shodan_info():
     global shodan_info,shodan_key_text
-    shodan_info = tk.Tk()
+    shodan_info = Toplevel()
     shodan_info.title("shodan_configuration")
-    shodan_info.geometry('250x70')
+    shodan_info.geometry('300x80')
     shodan_info.resizable(0, 0)
-    shodan_info.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    shodan_info.tk.call('wm', 'iconphoto', shodan_info._w, logo)
     shodan_key = tk.StringVar(shodan_info,value="Fill in your key")
     shodan_key_text = ttk.Entry(shodan_info, bootstyle="success", width=33, textvariable=shodan_key)
     shodan_key_text.grid(row=0, column=0, padx=5, pady=5)

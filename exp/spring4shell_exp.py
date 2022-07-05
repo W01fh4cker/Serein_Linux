@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # coding=utf-8
 import random
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from concurrent.futures import ThreadPoolExecutor
 import requests
 import tkinter as tk
@@ -147,11 +149,12 @@ def run_spring4shell():
         spring_text.see(END)
         exit(0)
 def spring4shell_gui():
-    spring = tk.Tk()
-    spring.geometry("820x520")
+    spring = Toplevel()
+    spring.geometry("910x520")
     spring.title("Spring4shell一把梭")
     spring.resizable(0, 0)
-    spring.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    spring.tk.call('wm', 'iconphoto', spring._w, logo)
     try:
         import requests.packages.urllib3
         requests.packages.urllib3.disable_warnings()

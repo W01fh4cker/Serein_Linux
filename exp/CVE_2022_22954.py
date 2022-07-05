@@ -1,5 +1,7 @@
 import requests
 import tkinter as tk
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
@@ -25,11 +27,12 @@ def get_vmware_one_access_ssti_addr():
             address = address.strip()
             yield address
 def vmware_one_access_ssti_gui():
-    vmware_one_access_ssti = tk.Tk()
-    vmware_one_access_ssti.geometry("910x450")
+    vmware_one_access_ssti = Toplevel()
+    vmware_one_access_ssti.geometry("1035x455")
+    logo = PhotoImage(file="./logo.ico")
+    vmware_one_access_ssti.tk.call('wm', 'iconphoto', vmware_one_access_ssti._w, logo)
     vmware_one_access_ssti.title("VMware服务端模板注入漏洞(CVE-2022-22954)一把梭【注意：验证该漏洞时请关注您网页F12下的控制台输出内容！】")
     vmware_one_access_ssti.resizable(0, 0)
-    vmware_one_access_ssti.iconbitmap('logo.ico')
     global vmware_one_access_ssti_text
     vmware_one_access_ssti_text = scrolledtext.ScrolledText(vmware_one_access_ssti,width=123, height=25)
     vmware_one_access_ssti_text.grid(row=0, column=0, padx=10, pady=10)

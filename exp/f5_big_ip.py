@@ -2,6 +2,8 @@ import requests
 import json
 import tkinter as tk
 from tkinter import scrolledtext
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
 def f5_big_ip_exp(url):
@@ -45,11 +47,12 @@ def get_f5_big_ip_addr():
             address = address.strip()
             yield address
 def f5_big_ip_gui():
-    f5_big_ip = tk.Tk()
-    f5_big_ip.geometry("910x450")
+    f5_big_ip = Toplevel()
+    f5_big_ip.geometry("1035x455")
     f5_big_ip.title("F5 BIG-IP 远程代码执行漏洞一把梭")
     f5_big_ip.resizable(0, 0)
-    f5_big_ip.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    f5_big_ip.tk.call('wm', 'iconphoto', f5_big_ip._w, logo)
     global f5_big_ip_text
     f5_big_ip_text = scrolledtext.ScrolledText(f5_big_ip,width=123, height=25)
     f5_big_ip_text.grid(row=0, column=0, padx=10, pady=10)

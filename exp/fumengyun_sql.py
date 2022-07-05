@@ -1,6 +1,8 @@
 import requests
 import tkinter as tk
 from tkinter import scrolledtext
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
 def fumengyun_sql_exp(url):
@@ -25,11 +27,12 @@ def get_fumengyun_sql_addr():
             address = address.strip()
             yield address
 def fumengyun_sql_gui():
-    fumengyun_sql = tk.Tk()
-    fumengyun_sql.geometry("910x450")
+    fumengyun_sql = Toplevel()
+    fumengyun_sql.geometry("1035x455")
     fumengyun_sql.title("孚盟云 AjaxMethod.ashx SQL注入漏洞一把梭")
     fumengyun_sql.resizable(0, 0)
-    fumengyun_sql.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    fumengyun_sql.tk.call('wm', 'iconphoto', fumengyun_sql._w, logo)
     global fumengyun_sql_text
     fumengyun_sql_text = scrolledtext.ScrolledText(fumengyun_sql,width=123, height=25)
     fumengyun_sql_text.grid(row=0, column=0, padx=10, pady=10)

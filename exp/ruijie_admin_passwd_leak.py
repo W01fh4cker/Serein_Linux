@@ -1,6 +1,8 @@
 import requests
 import tkinter as tk
 from tkinter import scrolledtext
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
 def ruijie_admin_passwd_leak_exp(url):
@@ -26,11 +28,12 @@ def get_ruijie_admin_passwd_leak_addr():
             address = address.strip()
             yield address
 def ruijie_admin_passwd_leak_gui():
-    ruijie_admin_passwd_leak = tk.Tk()
-    ruijie_admin_passwd_leak.geometry("910x450")
+    ruijie_admin_passwd_leak = Toplevel()
+    ruijie_admin_passwd_leak.geometry("1035x455")
     ruijie_admin_passwd_leak.title("锐捷 EG易网关 login.php 管理员账号密码泄露漏洞一把梭")
     ruijie_admin_passwd_leak.resizable(0, 0)
-    ruijie_admin_passwd_leak.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    ruijie_admin_passwd_leak.tk.call('wm', 'iconphoto', ruijie_admin_passwd_leak._w, logo)
     global ruijie_admin_passwd_leak_text
     ruijie_admin_passwd_leak_text = scrolledtext.ScrolledText(ruijie_admin_passwd_leak,width=123, height=25)
     ruijie_admin_passwd_leak_text.grid(row=0, column=0, padx=10, pady=10)

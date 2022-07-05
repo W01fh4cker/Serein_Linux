@@ -1,5 +1,7 @@
 import requests
 import tkinter as tk
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
@@ -25,11 +27,12 @@ def get_VOS3000_redfile_addr():
             address = address.strip()
             yield address
 def VOS3000_redfile_gui():
-    VOS3000_redfile = tk.Tk()
-    VOS3000_redfile.geometry("910x450")
+    VOS3000_redfile = Toplevel()
+    VOS3000_redfile.geometry("1035x455")
     VOS3000_redfile.title("昆石网络 虚拟运营支撑系统任意文件读取漏洞一把梭")
     VOS3000_redfile.resizable(0, 0)
-    VOS3000_redfile.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    VOS3000_redfile.tk.call('wm', 'iconphoto', VOS3000_redfile._w, logo)
     global VOS3000_redfile_text
     VOS3000_redfile_text = scrolledtext.ScrolledText(VOS3000_redfile,width=123, height=25)
     VOS3000_redfile_text.grid(row=0, column=0, padx=10, pady=10)

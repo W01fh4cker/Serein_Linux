@@ -1,5 +1,7 @@
 import requests
 import json
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 import tkinter as tk
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
@@ -44,11 +46,12 @@ def get_Thinkphp_5_0_x_gethell_addr():
             address = address.strip()
             yield address
 def Thinkphp_5_0_x_gethell_gui():
-    Thinkphp_5_0_x_gethell = tk.Tk()
-    Thinkphp_5_0_x_gethell.geometry("910x450")
+    Thinkphp_5_0_x_gethell = Toplevel()
+    Thinkphp_5_0_x_gethell.geometry("1035x455")
     Thinkphp_5_0_x_gethell.title("Thinkphp 5.0.x通杀gethell一把梭")
     Thinkphp_5_0_x_gethell.resizable(0, 0)
-    Thinkphp_5_0_x_gethell.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    Thinkphp_5_0_x_gethell.tk.call('wm', 'iconphoto', Thinkphp_5_0_x_gethell._w, logo)
     global Thinkphp_5_0_x_gethell_text
     Thinkphp_5_0_x_gethell_text = scrolledtext.ScrolledText(Thinkphp_5_0_x_gethell,width=123, height=25)
     Thinkphp_5_0_x_gethell_text.grid(row=0, column=0, padx=10, pady=10)

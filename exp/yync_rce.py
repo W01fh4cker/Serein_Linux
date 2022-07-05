@@ -1,5 +1,7 @@
 import requests
 import tkinter as tk
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
@@ -25,11 +27,12 @@ def get_yync_addr():
             address = address.strip()
             yield address
 def yync_rce_gui():
-    yync_rce = tk.Tk()
-    yync_rce.geometry("910x450")
+    yync_rce = Toplevel()
+    yync_rce.geometry("1035x455")
     yync_rce.title("用友 NC bsh.servlet.BshServlet 远程命令执行漏洞一把梭")
     yync_rce.resizable(0, 0)
-    yync_rce.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    yync_rce.tk.call('wm', 'iconphoto', yync_rce._w, logo)
     global yync_rce_text
     yync_rce_text = scrolledtext.ScrolledText(yync_rce,width=123, height=25)
     yync_rce_text.grid(row=0, column=0, padx=10, pady=10)

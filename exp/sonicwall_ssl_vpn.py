@@ -1,4 +1,6 @@
 import requests
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 import tkinter as tk
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
@@ -42,11 +44,12 @@ def get_sonic_addr():
             address = address.strip()
             yield address
 def sonicwall_ssl_vpn_gui():
-    sonicwall_ssl_vpn = tk.Tk()
-    sonicwall_ssl_vpn.geometry("910x450")
+    sonicwall_ssl_vpn = Toplevel()
+    sonicwall_ssl_vpn.geometry("1035x455")
     sonicwall_ssl_vpn.title("SonicWall SSL-VPN 远程命令执行漏洞一把梭")
     sonicwall_ssl_vpn.resizable(0, 0)
-    sonicwall_ssl_vpn.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    sonicwall_ssl_vpn.tk.call('wm', 'iconphoto', sonicwall_ssl_vpn._w, logo)
     global sonicwall_ssl_vpn_text
     sonicwall_ssl_vpn_text = scrolledtext.ScrolledText(sonicwall_ssl_vpn,width=123, height=25)
     sonicwall_ssl_vpn_text.grid(row=0, column=0, padx=10, pady=10)

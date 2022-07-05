@@ -1,4 +1,6 @@
 import tkinter as tk
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from concurrent.futures import ThreadPoolExecutor
 from tkinter import scrolledtext
 import requests
@@ -43,11 +45,12 @@ def get_addr():
             address = address.strip()
             yield address
 def confluence_gui():
-    confluence = tk.Tk()
-    confluence.geometry("1200x600")
+    confluence = Toplevel()
+    confluence.geometry("1370x600")
     confluence.title("ConfulenceONGL RCE一把梭（启动可能有点卡，请耐心等待，不要关闭或者乱点）")
     confluence.resizable(0, 0)
-    confluence.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    confluence.tk.call('wm', 'iconphoto', confluence._w, logo)
     global confluence_text
     confluence_text = scrolledtext.ScrolledText(confluence,width=165, height=33)
     confluence_text.grid(row=0, column=0, padx=10, pady=10)

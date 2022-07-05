@@ -1,6 +1,8 @@
 import requests
 import tkinter as tk
+from tkinter import *
 from tkinter import scrolledtext
+from PIL.ImageTk import PhotoImage
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
 def dcs_admin_passwd_leak_exp(url):
@@ -25,11 +27,12 @@ def get_dcs_admin_passwd_leak_addr():
             address = address.strip()
             yield address
 def dcs_admin_passwd_leak_gui():
-    dcs_admin_passwd_leak = tk.Tk()
-    dcs_admin_passwd_leak.geometry("910x450")
+    dcs_admin_passwd_leak = Toplevel()
+    dcs_admin_passwd_leak.geometry("1035x455")
     dcs_admin_passwd_leak.title("D-Link monitoring account password information leakage [auto-muti-exp]")
     dcs_admin_passwd_leak.resizable(0, 0)
-    dcs_admin_passwd_leak.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    dcs_admin_passwd_leak.tk.call('wm', 'iconphoto', dcs_admin_passwd_leak._w, logo)
     global dcs_admin_passwd_leak_text
     dcs_admin_passwd_leak_text = scrolledtext.ScrolledText(dcs_admin_passwd_leak,width=123, height=25)
     dcs_admin_passwd_leak_text.grid(row=0, column=0, padx=10, pady=10)

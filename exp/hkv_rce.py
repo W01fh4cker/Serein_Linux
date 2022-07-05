@@ -1,5 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor
 import requests
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 import tkinter as tk
 from tkinter import scrolledtext
 from ttkbootstrap.constants import *
@@ -44,11 +46,12 @@ def hkv_rce(address):
         hkv_text.see(END)
 
 def hkv_rce_gui():
-    hkv_gui = tk.Tk()
-    hkv_gui.geometry("900x450")
+    hkv_gui = Toplevel()
+    hkv_gui.geometry("1035x455")
     hkv_gui.title("海康威视RCE一把梭")
     hkv_gui.resizable(0, 0)
-    hkv_gui.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    hkv_gui.tk.call('wm', 'iconphoto', hkv_gui._w, logo)
     global hkv_text
     hkv_text = scrolledtext.ScrolledText(hkv_gui,width=119, height=24)
     hkv_text.grid(row=4, columnspan=3, padx=20, pady=10)

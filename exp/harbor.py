@@ -1,6 +1,8 @@
 import requests
 import base64
 import tkinter as tk
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
@@ -30,11 +32,12 @@ def get_harbor_addr():
             address = address.strip()
             yield address
 def harbor_gui():
-    harbor = tk.Tk()
-    harbor.geometry("910x450")
+    harbor = Toplevel()
+    harbor.geometry("1035x455")
     harbor.title("Harbor 未授权创建管理员漏洞一把梭")
     harbor.resizable(0, 0)
-    harbor.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    harbor.tk.call('wm', 'iconphoto', harbor._w, logo)
     global harbor_text
     harbor_text = scrolledtext.ScrolledText(harbor,width=123, height=25)
     harbor_text.grid(row=0, column=0, padx=10, pady=10)

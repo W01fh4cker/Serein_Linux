@@ -1,5 +1,7 @@
 import requests
 import tkinter as tk
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
@@ -30,11 +32,12 @@ def get_vigor_rce_addr():
             address = address.strip()
             yield address
 def vigor_rce_gui():
-    vigor_rce = tk.Tk()
-    vigor_rce.geometry("910x450")
+    vigor_rce = Toplevel()
+    vigor_rce.geometry("1035x455")
     vigor_rce.title("DrayTek企业网络设备 远程命令执行一把梭")
     vigor_rce.resizable(0, 0)
-    vigor_rce.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    vigor_rce.tk.call('wm', 'iconphoto', vigor_rce._w, logo)
     global vigor_rce_text
     vigor_rce_text = scrolledtext.ScrolledText(vigor_rce,width=123, height=25)
     vigor_rce_text.grid(row=0, column=0, padx=10, pady=10)

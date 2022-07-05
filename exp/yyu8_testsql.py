@@ -1,6 +1,8 @@
 import requests
 import tkinter as tk
 from tkinter import scrolledtext
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
 def yyu8_testsql_exp(url):
@@ -25,11 +27,12 @@ def get_yyu8_addr():
             address = address.strip()
             yield address
 def yyu8_testsql_gui():
-    yyu8_testsql = tk.Tk()
-    yyu8_testsql.geometry("910x450")
+    yyu8_testsql = Toplevel()
+    yyu8_testsql.geometry("1035x455")
     yyu8_testsql.title("用友 U8 OA test.jsp SQL注入漏洞一把梭")
     yyu8_testsql.resizable(0, 0)
-    yyu8_testsql.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    yyu8_testsql.tk.call('wm', 'iconphoto', yyu8_testsql._w, logo)
     global yyu8_testsql_text
     yyu8_testsql_text = scrolledtext.ScrolledText(yyu8_testsql,width=123, height=25)
     yyu8_testsql_text.grid(row=0, column=0, padx=10, pady=10)

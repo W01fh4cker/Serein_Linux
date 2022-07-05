@@ -1,6 +1,8 @@
 import requests
 import json
 import tkinter as tk
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
@@ -29,11 +31,12 @@ def get_dvr_login_bypass_addr():
             address = address.strip()
             yield address
 def dvr_login_bypass_gui():
-    dvr_login_bypass = tk.Tk()
-    dvr_login_bypass.geometry("910x450")
+    dvr_login_bypass = Toplevel()
+    dvr_login_bypass.geometry("1035x455")
     dvr_login_bypass.title("DVR 登录绕过漏洞(CVE-2018-9995)一把梭")
     dvr_login_bypass.resizable(0, 0)
-    dvr_login_bypass.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    dvr_login_bypass.tk.call('wm', 'iconphoto', dvr_login_bypass._w, logo)
     global dvr_login_bypass_text
     dvr_login_bypass_text = scrolledtext.ScrolledText(dvr_login_bypass,width=123, height=25)
     dvr_login_bypass_text.grid(row=0, column=0, padx=10, pady=10)

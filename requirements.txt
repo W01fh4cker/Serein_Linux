@@ -5,5 +5,5 @@ fake-useragent
 threadpool
 tldextract
 bs4
-pycryptodome
+pycrypto
 shodan

@@ -1,5 +1,7 @@
 import requests
 import tkinter as tk
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
 from ttkbootstrap.constants import *
@@ -23,10 +25,11 @@ def get_dede_addr():
             yield address
 def dedesql_gui():
     dedesql = tk.Tk()
-    dedesql.geometry("910x450")
+    dedesql.geometry("1035x455")
     dedesql.title("DedeCMS v5.7.87 SQL注入漏洞(CVE-2022-23337)一把梭")
     dedesql.resizable(0, 0)
-    dedesql.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    dedesql.tk.call('wm', 'iconphoto', dedesql._w, logo)
     global dedesql_text
     dedesql_text = scrolledtext.ScrolledText(dedesql,width=123, height=25)
     dedesql_text.grid(row=0, column=0, padx=10, pady=10)

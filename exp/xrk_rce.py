@@ -1,5 +1,7 @@
 import re, requests
 import tkinter as tk
+from tkinter import *
+from PIL.ImageTk import PhotoImage
 from tkinter import scrolledtext
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import unquote
@@ -46,11 +48,12 @@ def xrk_rce(address):
         xrk_text.see(END)
 
 def xrk_rce_gui():
-    xrk_gui = tk.Tk()
-    xrk_gui.geometry("910x450")
+    xrk_gui = Toplevel()
+    xrk_gui.geometry("1035x455")
     xrk_gui.title("向日葵RCE一把梭")
     xrk_gui.resizable(0, 0)
-    xrk_gui.iconbitmap('logo.ico')
+    logo = PhotoImage(file="./logo.ico")
+    xrk_gui.tk.call('wm', 'iconphoto', xrk_gui._w, logo)
     global xrk_text
     xrk_text = scrolledtext.ScrolledText(xrk_gui,width=122, height=24)
     xrk_text.grid(row=4, columnspan=3, padx=10, pady=10)
