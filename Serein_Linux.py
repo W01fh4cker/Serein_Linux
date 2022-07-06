@@ -23,6 +23,7 @@ from exp.CVE_2020_25078 import *
 from exp.fumengyun_sql import *
 from exp.VOS3000_readfile import *
 from exp.kkFileView_readfile_CVE_2021_43734 import *
+from exp.CVE_2022_29464 import *
 import json
 import threading
 from tkinter.messagebox import *
@@ -654,6 +655,8 @@ button21 = ttk.Button(group3,text="Kunshi  virtual operation support system read
 button21.grid(row=5,column=4,columnspan=2,padx=5,pady=5)
 button22 = ttk.Button(group3,text="kkFileView getCorsFile arbitrary file read [auto-muti-exp]",command=kkFileView_readfile_CVE_2021_43734_gui,width=60,bootstyle="success")
 button22.grid(row=6,column=0,columnspan=2,padx=5,pady=5)
+button23 = ttk.Button(group3,text="WSO2 RCE(CVE-2022-29464) [auto-muti-exp]",command=CVE_2022_29464_gui,width=60,bootstyle="success")
+button23.grid(row=6,column=2,columnspan=2,padx=5,pady=5)
 notebook.add(frameThree, text='IP reverse domain name query + weight query')
 def ip138_chaxun(ip, ua):
     ip138_headers = {
@@ -915,7 +918,7 @@ encode_text = scrolledtext.ScrolledText(group7, width=100, height=30)
 encode_text.grid(row=2, column=0, padx=10, pady=10)
 encode_text2 = scrolledtext.ScrolledText(group8, width=98, height=36)
 encode_text2.grid(row=2, column=1, padx=10, pady=10)
-encode_text2.insert(END,"""["Confluence" && country="CN"]'s encryption result is:IkNvbmZsdWVuY2UiICYmIGNvdW50cnk9IkNOIg==\n\n[app="HIKVISION-视频监控"]'s encryption result is:YXBwPSJISUtWSVNJT04t6KeG6aKR55uR5o6nIg==\n\n[app="TDXK-通达OA"]'s encryption result is:YXBwPSJURFhLLemAmui+vk9BIg==\n\n[(body="login_box_sonicwall" || header="SonicWALL SSL-VPN Web Server") && body="SSL-VPN"]'s encryption result is:KGJvZHk9ImxvZ2luX2JveF9zb25pY3dhbGwiIHx8IGhlYWRlcj0iU29uaWNXQUxMIFNTTC1WUE4gV2ViIFNlcnZlciIpICYmIGJvZHk9IlNTTC1WUE4i\n\n[icon_hash="-335242539"]'s encryption result is:aWNvbl9oYXNoPSItMzM1MjQyNTM5Ig==\n\n[title="Harbor"]'s encryption result is:dGl0bGU9IkhhcmJvciI=\n\n[title="XVR Login"]'s encryption result is:dGl0bGU9IlhWUiBMb2dpbiI=\n\n[app="Metabase"]'s encryption result is:YXBwPSJNZXRhYmFzZSI=\n\n[app="vmware-Workspace-ONE-Access" || app="vmware-Identity-Manager"]'s encryption result is:YXBwPSJ2bXdhcmUtV29ya3NwYWNlLU9ORS1BY2Nlc3MiIHx8IGFwcD0idm13YXJlLUlkZW50aXR5LU1hbmFnZXIi\n\n[app="APACHE-Spark-Jobs"]'s encryption result is:YXBwPSJBUEFDSEUtU3BhcmstSm9icyI=\n\n[header="thinkphp"]'s encryption result is:aGVhZGVyPSJ0aGlua3BocCI=\n\n[app="Ruijie-EG易网关" && port="4430"]'s encryption result is:YXBwPSJSdWlqaWUtRUfmmJPnvZHlhbMiICYmIHBvcnQ9IjQ0MzAi\n\n[app="MSA/1.0"]'s encryption result is:YXBwPSJNU0EvMS4wIg==\n\n[title="Vigor 2960"]'s encryption result is:dGl0bGU9IlZpZ29yIDI5NjAi\n\n[app="D_Link-DCS-2530L"]'s encryption result is:YXBwPSJEX0xpbmstRENTLTI1MzBMIg==\n\n[title="孚盟云 "]'s encryption result is:dGl0bGU9IuWtmuebn+S6kSAi\n\n[app="VOS-VOS3000"]'s encryption result is:YXBwPSJWT1MtVk9TMzAwMCI=\n\n[body="kkFileView"]'s encryption result is:Ym9keT0ia2tGaWxlVmlldyI=\n\n""")
+encode_text2.insert(END,"""["Confluence" && country="CN"]'s encryption result is:IkNvbmZsdWVuY2UiICYmIGNvdW50cnk9IkNOIg==\n\n[app="HIKVISION-视频监控"]'s encryption result is:YXBwPSJISUtWSVNJT04t6KeG6aKR55uR5o6nIg==\n\n[app="TDXK-通达OA"]'s encryption result is:YXBwPSJURFhLLemAmui+vk9BIg==\n\n[(body="login_box_sonicwall" || header="SonicWALL SSL-VPN Web Server") && body="SSL-VPN"]'s encryption result is:KGJvZHk9ImxvZ2luX2JveF9zb25pY3dhbGwiIHx8IGhlYWRlcj0iU29uaWNXQUxMIFNTTC1WUE4gV2ViIFNlcnZlciIpICYmIGJvZHk9IlNTTC1WUE4i\n\n[icon_hash="-335242539"]'s encryption result is:aWNvbl9oYXNoPSItMzM1MjQyNTM5Ig==\n\n[title="Harbor"]'s encryption result is:dGl0bGU9IkhhcmJvciI=\n\n[title="XVR Login"]'s encryption result is:dGl0bGU9IlhWUiBMb2dpbiI=\n\n[app="Metabase"]'s encryption result is:YXBwPSJNZXRhYmFzZSI=\n\n[app="vmware-Workspace-ONE-Access" || app="vmware-Identity-Manager"]'s encryption result is:YXBwPSJ2bXdhcmUtV29ya3NwYWNlLU9ORS1BY2Nlc3MiIHx8IGFwcD0idm13YXJlLUlkZW50aXR5LU1hbmFnZXIi\n\n[app="APACHE-Spark-Jobs"]'s encryption result is:YXBwPSJBUEFDSEUtU3BhcmstSm9icyI=\n\n[header="thinkphp"]'s encryption result is:aGVhZGVyPSJ0aGlua3BocCI=\n\n[app="Ruijie-EG易网关" && port="4430"]'s encryption result is:YXBwPSJSdWlqaWUtRUfmmJPnvZHlhbMiICYmIHBvcnQ9IjQ0MzAi\n\n[app="MSA/1.0"]'s encryption result is:YXBwPSJNU0EvMS4wIg==\n\n[title="Vigor 2960"]'s encryption result is:dGl0bGU9IlZpZ29yIDI5NjAi\n\n[app="D_Link-DCS-2530L"]'s encryption result is:YXBwPSJEX0xpbmstRENTLTI1MzBMIg==\n\n[title="孚盟云 "]'s encryption result is:dGl0bGU9IuWtmuebn+S6kSAi\n\n[app="VOS-VOS3000"]'s encryption result is:YXBwPSJWT1MtVk9TMzAwMCI=\n\n[body="kkFileView"]'s encryption result is:Ym9keT0ia2tGaWxlVmlldyI=\n\n[title="WSO2 Management Console"]'s encryption result is:   dGl0bGU9IldTTzIgTWFuYWdlbWVudCBDb25zb2xlIg==\n\n""")
 encode_text2.see(END)
 encode_text2.config(state="disabled")
 def base64_dec():
